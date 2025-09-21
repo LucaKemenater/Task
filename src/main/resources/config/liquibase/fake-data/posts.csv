@@ -1,0 +1,4 @@
+id;title;slug;content;published_at;status;author_login
+1;Willkommen bei Frankford IT;willkommen-frankford-it;"Wir freuen uns über deinen Start...";'2025-09-18T08:00:00Z';PUBLISHED;sophie
+2;Tech Stack Entscheidung 2025;tech-stack-2025;"Backend mit Spring Boot...";'2025-09-17T07:30:00Z';PUBLISHED;admin
+3;Erste Kundenversion geht live;erste-kundenversion-live;"Die MVP-Version...";'2025-09-16T15:45:00Z';PUBLISHED;sophie

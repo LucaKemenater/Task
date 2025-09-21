@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (posts(); as postsRef) {
+      <div>
+        <h2 data-cy="postsDetailsHeading"><span>Posts</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ postsRef.id }}</span>
+          </dd>
+          <dt><span>Title</span></dt>
+          <dd>
+            <span>{{ postsRef.title }}</span>
+          </dd>
+          <dt><span>Slug</span></dt>
+          <dd>
+            <span>{{ postsRef.slug }}</span>
+          </dd>
+          <dt><span>Content</span></dt>
+          <dd>
+            <span>{{ postsRef.content }}</span>
+          </dd>
+          <dt><span>Published At</span></dt>
+          <dd>
+            <span>{{ postsRef.publishedAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ { null: '', DRAFT: 'DRAFT', PUBLISHED: 'PUBLISHED' }[postsRef.status ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Author Login</span></dt>
+          <dd>
+            <span>{{ postsRef.authorLogin }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/posts', postsRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

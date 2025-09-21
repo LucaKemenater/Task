@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet id="20250921152716-1" author="jhipster">
+    <createTable tableName="posts">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="title" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="slug" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="content" type="clob">
+        <constraints nullable="false" />
+      </column>
+      <column name="published_at" type="timestamp">
+        <constraints nullable="false" />
+      </column>
+      <column name="status" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="author_login" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+    <dropDefaultValue tableName="posts" columnName="published_at" columnDataType="${datetimeType}"/>
+  </changeSet>
+
+  <changeSet id="20250921152716-1-data" author="jhipster" context="dev">
+    <sql>
+      INSERT INTO posts (id, title, slug, content, published_at, status, author_login) VALUES (1, 'Willkommen bei Frankford IT', 'willkommen-frankford-it', 'Wir freuen uns über deinen Start...', '2025-09-18T08:00:00Z', 'PUBLISHED', 'sophie');
+      INSERT INTO posts (id, title, slug, content, published_at, status, author_login) VALUES (2, 'Tech Stack Entscheidung 2025', 'tech-stack-2025', 'Backend mit Spring Boot...', '2025-09-17T07:30:00Z', 'PUBLISHED', 'admin');
+      INSERT INTO posts (id, title, slug, content, published_at, status, author_login) VALUES (3, 'Erste Kundenversion geht live', 'erste-kundenversion-live', 'Die MVP-Version...', '2025-09-16T15:45:00Z', 'PUBLISHED', 'sophie');
+    </sql>
+  </changeSet>
+</databaseChangeLog>

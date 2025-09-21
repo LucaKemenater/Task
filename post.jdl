@@ -1,0 +1,12 @@
+entity Posts {
+  title String required
+  slug String required
+  content TextBlob required
+  publishedAt Instant required
+  status PostStatus required
+  authorLogin String required
+}
+
+enum PostStatus {
+  DRAFT, PUBLISHED
+}
