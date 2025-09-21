@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.jhipster.task.domain.Posts;
+import org.jhipster.task.domain.enumeration.PostStatus;
 import org.jhipster.task.repository.PostsRepository;
+import org.jhipster.task.security.SecurityUtils;
 import org.jhipster.task.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,7 +160,9 @@ public class PostsResource {
     @GetMapping("")
     public List<Posts> getAllPosts() {
         LOG.debug("REST request to get all Posts");
-        return postsRepository.findAll();
+        String currentUserLogin = SecurityUtils.getCurrentUserLogin()
+            .orElseThrow(() -> new RuntimeException("Current user login not found"));
+        return postsRepository.findPublishedAndOwnDrafts(currentUserLogin);
     }
 
     /**
