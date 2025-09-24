@@ -4,7 +4,7 @@ import { Observable, Subscription, combineLatest, filter, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
-import { SortByDirective, SortDirective, SortService, type SortState, sortStateSignal } from 'app/shared/sort';
+import { SortService, type SortState, sortStateSignal } from 'app/shared/sort';
 import { FormatMediumDatetimePipe } from 'app/shared/date';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
@@ -16,7 +16,7 @@ import { PostsDeleteDialogComponent } from '../delete/posts-delete-dialog.compon
 @Component({
   selector: 'jhi-posts',
   templateUrl: './posts.component.html',
-  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, FormatMediumDatetimePipe],
+  imports: [RouterModule, FormsModule, SharedModule, FormatMediumDatetimePipe],
 })
 export class PostsComponent implements OnInit {
   subscription: Subscription | null = null;
